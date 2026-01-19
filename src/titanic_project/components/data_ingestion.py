@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from src.titanic_project.utils import read_sql_data
 import sys
 import os
-
+import pandas as pd
 @dataclass
 class DataIngestionConfig():
     train_data_path = os.path.join('artifacts','train.csv')
@@ -18,7 +18,7 @@ class DataIngestion():
         try:
             ## reading data from mysql
             logging.info('Read Data from mysql')
-            df = read_sql_data()
+            df = pd.read_csv('notebook/Data/raw.csv')
             os.makedirs(os.path.dirname(self.data_ingestion_config.train_data_path),exist_ok=True)
             df.to_csv(self.data_ingestion_config.raw_data_path,header=True,index=False)
             train_set,test_set = train_test_split(df,test_size=0.2,random_state=42)
