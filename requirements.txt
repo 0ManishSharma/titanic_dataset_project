@@ -6,3 +6,7 @@ xgboost
 dotenv
 pymysql
 ipykernel
+fastapi
+uvicorn
+streamlit
+requests
